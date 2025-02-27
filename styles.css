@@ -6,9 +6,19 @@ body {
 }
 
 .container {
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     border-style: solid;
     display: flex;
     flex-wrap: wrap;
+}
+
+button {
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    margin-bottom: 10px;
+    width: 400px;
+    height: auto;
 }

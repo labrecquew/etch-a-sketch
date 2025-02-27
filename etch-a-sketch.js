@@ -1,10 +1,26 @@
 const container = document.querySelector('div.container');
+const newGrid = document.querySelector('button');
 
 createGridLayout(16);
 
+newGrid.addEventListener("click", function() {
+    let gridsPerSide = prompt("Please enter the grids you want per side, 16-100: ");
+    let invalidInput = true;
+    while (invalidInput) {
+        if (gridsPerSide < 16 || gridsPerSide > 100) {
+            gridsPerSide = prompt("Invalid input, please enter the grids you want per side, 16-100: ");
+        } else {
+            invalidInput = false;
+        }
+    }
+    
+    createGridLayout(gridsPerSide);
+});
+
 function createGridLayout(gridNumber) {
     let totalGrids = gridNumber * gridNumber;
-    let gridSize = 500 / gridNumber;
+    removeGridLayout(totalGrids);
+    let gridSize = 400 / gridNumber;
     for (let i = 0; i < totalGrids; i++) {
         let grid = document.createElement('div');
         grid.style.height = gridSize + "px";
@@ -15,3 +31,10 @@ function createGridLayout(gridNumber) {
         container.appendChild(grid);
     }
 };
+
+function removeGridLayout() {
+     while(container.firstChild != null) {
+        let grid = container.firstChild;
+        grid.remove();
+    }
+}
