@@ -7,14 +7,15 @@ newGrid.addEventListener("click", function() {
     let gridsPerSide = prompt("Please enter the grids you want per side, 16-100: ");
     let invalidInput = true;
     while (invalidInput) {
-        if (gridsPerSide < 16 || gridsPerSide > 100) {
+        if (gridsPerSide === null) {
+            invalidInput = false;
+        } else if (gridsPerSide < 16 || gridsPerSide > 100) {
             gridsPerSide = prompt("Invalid input, please enter the grids you want per side, 16-100: ");
         } else {
+            createGridLayout(gridsPerSide);
             invalidInput = false;
         }
     }
-    
-    createGridLayout(gridsPerSide);
 });
 
 function createGridLayout(gridNumber) {
