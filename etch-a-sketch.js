@@ -8,7 +8,7 @@ newGrid.addEventListener("click", function() {
     let invalidInput = true;
     while (invalidInput) {
         if (gridsPerSide === null) {
-            invalidInput = false;
+            invalidInput = true;
         } else if (gridsPerSide < 16 || gridsPerSide > 100) {
             gridsPerSide = prompt("Invalid input, please enter the grids you want per side, 16-100: ");
         } else {
@@ -26,8 +26,15 @@ function createGridLayout(gridNumber) {
         let grid = document.createElement('div');
         grid.style.height = gridSize + "px";
         grid.style.width = gridSize + "px";
+        grid.style.opacity = 0;
         grid.addEventListener("mouseover", function() {
-            grid.style.backgroundColor = "#ADD8E6";
+            grid.style.backgroundColor = "pink";
+            if (grid.style.opacity < "0.9") {
+                let opacity = parseFloat(grid.style.opacity) + 0.1; 
+                grid.style.opacity = opacity.toString();
+            } else if (grid.style.opacity === "0.9") {
+                grid.style.opacity = "1.0";
+            }
         });
         container.appendChild(grid);
     }
